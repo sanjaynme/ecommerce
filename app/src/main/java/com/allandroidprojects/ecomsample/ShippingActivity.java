@@ -23,9 +23,9 @@ public class ShippingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("message/rfc822");
-                i.putExtra(Intent.EXTRA_EMAIL, new String[]{"jayraj_joshi123@gmail.com"});
+                i.putExtra(Intent.EXTRA_EMAIL, new String[]{"jayarajjoshi5093@gmail.com"});
                 i.putExtra(Intent.EXTRA_SUBJECT, "My orders");
-                i.putExtra(Intent.EXTRA_TEXT, "body of email");
+                i.putExtra(Intent.EXTRA_TEXT, "");
                 try {
                     startActivity(Intent.createChooser(i, "Send mail..."));
                 } catch (android.content.ActivityNotFoundException ex) {

@@ -3,14 +3,14 @@ package com.allandroidprojects.ecomsample.utility;
 import java.util.ArrayList;
 
 /**
- * Created by 06peng on 2015/6/24.
+ * Created by Jaya Raj Joshi on 2015/6/24.
  */
 public class ImageUrlUtils {
     static ArrayList<String> wishlistImageUri = new ArrayList<>();
     static ArrayList<String> cartListImageUri = new ArrayList<>();
 
     public static String[] getImageUrls() {
-        String[] urls = new String[] {
+        String[] urls = new String[]{
                 "https://static.pexels.com/photos/5854/sea-woman-legs-water-medium.jpg",
                 "https://static.pexels.com/photos/6245/kitchen-cooking-interior-decor-medium.jpg",
                 "https://static.pexels.com/photos/6770/light-road-lights-night-medium.jpg",
@@ -231,23 +231,27 @@ public class ImageUrlUtils {
 
     // Methods for Wishlist
     public void addWishlistImageUri(String wishlistImageUri) {
-        this.wishlistImageUri.add(0,wishlistImageUri);
+        this.wishlistImageUri.add(0, wishlistImageUri);
     }
 
     public void removeWishlistImageUri(int position) {
         this.wishlistImageUri.remove(position);
     }
 
-    public ArrayList<String> getWishlistImageUri(){ return this.wishlistImageUri; }
+    public ArrayList<String> getWishlistImageUri() {
+        return this.wishlistImageUri;
+    }
 
     // Methods for Cart
     public void addCartListImageUri(String wishlistImageUri) {
-        this.cartListImageUri.add(0,wishlistImageUri);
+        this.cartListImageUri.add(0, wishlistImageUri);
     }
 
     public void removeCartListImageUri(int position) {
         this.cartListImageUri.remove(position);
     }
 
-    public ArrayList<String> getCartListImageUri(){ return this.cartListImageUri; }
+    public ArrayList<String> getCartListImageUri() {
+        return this.cartListImageUri;
+    }
 }
