@@ -9,5 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/nast" />
+        android:text="@string/nast"
+        android:textColor="@color/colorPrimary"
+        android:textSize="40sp" />
 </RelativeLayout>
