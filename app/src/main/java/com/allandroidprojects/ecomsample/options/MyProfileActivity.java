@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.allandroidprojects.ecomsample.R;
 import com.allandroidprojects.ecomsample.ShippingActivity;
@@ -24,11 +23,9 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.ArrayList;
 
 import static com.allandroidprojects.ecomsample.fragments.ImageListFragment.STRING_IMAGE_POSITION;
-import static com.allandroidprojects.ecomsample.fragments.ImageListFragment.STRING_IMAGE_PRICE;
-import static com.allandroidprojects.ecomsample.fragments.ImageListFragment.STRING_IMAGE_TYPE;
 import static com.allandroidprojects.ecomsample.fragments.ImageListFragment.STRING_IMAGE_URI;
 
-public class CartListActivity extends AppCompatActivity {
+public class MyProfileActivity extends AppCompatActivity {
     private static Context mContext;
     private Button btnPayment;
 
@@ -36,7 +33,7 @@ public class CartListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart_list);
-        mContext = CartListActivity.this;
+        mContext = MyProfileActivity.this;
 
         ImageUrlUtils imageUrlUtils = new ImageUrlUtils();
         ArrayList<String> cartlistImageUri = imageUrlUtils.getCartListImageUri();
@@ -47,11 +44,11 @@ public class CartListActivity extends AppCompatActivity {
         RecyclerView.LayoutManager recylerViewLayoutManager = new LinearLayoutManager(mContext);
 
         recyclerView.setLayoutManager(recylerViewLayoutManager);
-        recyclerView.setAdapter(new CartListActivity.SimpleStringRecyclerViewAdapter(recyclerView, cartlistImageUri));
+        recyclerView.setAdapter(new MyProfileActivity.SimpleStringRecyclerViewAdapter(recyclerView, cartlistImageUri));
     }
 
     public static class SimpleStringRecyclerViewAdapter
-            extends RecyclerView.Adapter<CartListActivity.SimpleStringRecyclerViewAdapter.ViewHolder> {
+            extends RecyclerView.Adapter<MyProfileActivity.SimpleStringRecyclerViewAdapter.ViewHolder> {
 
         private ArrayList<String> mCartlistImageUri;
         private RecyclerView mRecyclerView;
@@ -60,15 +57,12 @@ public class CartListActivity extends AppCompatActivity {
             public final View mView;
             public final SimpleDraweeView mImageView;
             public final LinearLayout mLayoutItem, mLayoutRemove, mLayoutEdit;
-            private final TextView mItemName, mItemPrice;
 
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
                 mImageView = (SimpleDraweeView) view.findViewById(R.id.image_cartlist);
                 mLayoutItem = (LinearLayout) view.findViewById(R.id.layout_item_desc);
-                mItemName = (TextView) view.findViewById(R.id.item_name);
-                mItemPrice = (TextView) view.findViewById(R.id.item_price);
                 mLayoutRemove = (LinearLayout) view.findViewById(R.id.layout_action1);
                 mLayoutEdit = (LinearLayout) view.findViewById(R.id.layout_action2);
             }
@@ -80,13 +74,13 @@ public class CartListActivity extends AppCompatActivity {
         }
 
         @Override
-        public CartListActivity.SimpleStringRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public MyProfileActivity.SimpleStringRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_cartlist_item, parent, false);
-            return new CartListActivity.SimpleStringRecyclerViewAdapter.ViewHolder(view);
+            return new MyProfileActivity.SimpleStringRecyclerViewAdapter.ViewHolder(view);
         }
 
         @Override
-        public void onViewRecycled(CartListActivity.SimpleStringRecyclerViewAdapter.ViewHolder holder) {
+        public void onViewRecycled(MyProfileActivity.SimpleStringRecyclerViewAdapter.ViewHolder holder) {
             if (holder.mImageView.getController() != null) {
                 holder.mImageView.getController().onDetach();
             }
@@ -97,10 +91,8 @@ public class CartListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final CartListActivity.SimpleStringRecyclerViewAdapter.ViewHolder holder, final int position) {
+        public void onBindViewHolder(final MyProfileActivity.SimpleStringRecyclerViewAdapter.ViewHolder holder, final int position) {
             final Uri uri = Uri.parse(mCartlistImageUri.get(position));
-//            final String imageType = mItemType;
-//            final String imagePrice = mItemPrice;
             holder.mImageView.setImageURI(uri);
             holder.mLayoutItem.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -108,9 +100,6 @@ public class CartListActivity extends AppCompatActivity {
                     Intent intent = new Intent(mContext, ItemDetailsActivity.class);
                     intent.putExtra(STRING_IMAGE_URI, mCartlistImageUri.get(position));
                     intent.putExtra(STRING_IMAGE_POSITION, position);
-                    intent.putExtra(STRING_IMAGE_PRICE, position);
-                    intent.putExtra(STRING_IMAGE_TYPE, position);
-
                     mContext.startActivity(intent);
                 }
             });
@@ -152,10 +141,11 @@ public class CartListActivity extends AppCompatActivity {
             layoutCartItems.setVisibility(View.VISIBLE);
             layoutCartPayments.setVisibility(View.VISIBLE);
             Button btnPayment = (Button) findViewById(R.id.text_action_payment);
+
             btnPayment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(CartListActivity.this, ShippingActivity.class));
+                    startActivity(new Intent(MyProfileActivity.this, ShippingActivity.class));
                 }
             });
         } else {

@@ -2,26 +2,29 @@ package com.allandroidprojects.ecomsample.startup;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.allandroidprojects.ecomsample.R;
 import com.allandroidprojects.ecomsample.fragments.ImageListFragment;
 import com.allandroidprojects.ecomsample.miscellaneous.EmptyActivity;
 import com.allandroidprojects.ecomsample.notification.NotificationCountSetClass;
 import com.allandroidprojects.ecomsample.options.CartListActivity;
+import com.allandroidprojects.ecomsample.options.MyProfileActivity;
 import com.allandroidprojects.ecomsample.options.SearchResultActivity;
 import com.allandroidprojects.ecomsample.options.WishlistActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,15 +44,15 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-         viewPager = (ViewPager) findViewById(R.id.viewpager);
-         tabLayout = (TabLayout) findViewById(R.id.tabs);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         if (viewPager != null) {
             setupViewPager(viewPager);
@@ -95,7 +98,7 @@ public class MainActivity extends AppCompatActivity
         // Get the notifications MenuItem and
         // its LayerDrawable (layer-list)
         MenuItem item = menu.findItem(R.id.action_cart);
-        NotificationCountSetClass.setAddToCart(MainActivity.this, item,notificationCountCart);
+        NotificationCountSetClass.setAddToCart(MainActivity.this, item, notificationCountCart);
         // force the ActionBar to relayout its MenuItems.
         // onCreateOptionsMenu(Menu) will be called again.
         invalidateOptionsMenu();
@@ -113,7 +116,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.action_search) {
             startActivity(new Intent(MainActivity.this, SearchResultActivity.class));
             return true;
-        }else if (id == R.id.action_cart) {
+        } else if (id == R.id.action_cart) {
 
            /* NotificationCountSetClass.setAddToCart(MainActivity.this, item, notificationCount);
             invalidateOptionsMenu();*/
@@ -122,7 +125,7 @@ public class MainActivity extends AppCompatActivity
            /* notificationCount=0;//clear notification count
             invalidateOptionsMenu();*/
             return true;
-        }else {
+        } else {
             startActivity(new Intent(MainActivity.this, EmptyActivity.class));
 
         }
@@ -180,13 +183,21 @@ public class MainActivity extends AppCompatActivity
             viewPager.setCurrentItem(3);
         } else if (id == R.id.nav_item5) {
             viewPager.setCurrentItem(4);
-        }else if (id == R.id.nav_item6) {
+        } else if (id == R.id.nav_item6) {
             viewPager.setCurrentItem(5);
-        }else if (id == R.id.my_wishlist) {
+        } else if (id == R.id.my_wishlist) {
             startActivity(new Intent(MainActivity.this, WishlistActivity.class));
-        }else if (id == R.id.my_cart) {
+        } else if (id == R.id.contact_us) {
+            startActivity(new Intent(MainActivity.this, ContactUsActivity.class));
+        } else if (id == R.id.terms_conditions) {
+            startActivity(new Intent(MainActivity.this, ContactUsActivity.class));
+        } else if (id == R.id.help_center) {
+            startActivity(new Intent(MainActivity.this, ContactUsActivity.class));
+        } else if (id == R.id.my_cart) {
             startActivity(new Intent(MainActivity.this, CartListActivity.class));
-        }else {
+        } else if (id == R.id.my_account) {
+            startActivity(new Intent(MainActivity.this, MyProfileActivity.class));
+        } else {
             startActivity(new Intent(MainActivity.this, EmptyActivity.class));
         }
 

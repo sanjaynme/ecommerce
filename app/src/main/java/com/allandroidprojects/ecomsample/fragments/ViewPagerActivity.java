@@ -35,7 +35,7 @@ import com.allandroidprojects.ecomsample.utility.ImageUrlUtils;
  * Lock/Unlock button is added to the ActionBar.
  * Use it to temporarily disable ViewPager navigation in order to correctly interact with ImageView by gestures.
  * Lock/Unlock state of ViewPager is saved and restored on configuration changes.
- *
+ * <p>
  * Julia Zudikova
  */
 
@@ -71,8 +71,8 @@ public class ViewPagerActivity extends Activity {
     }
 
     static class SamplePagerAdapter extends PagerAdapter {
-       /* Here I'm adding the demo pics, but you can add your Item related pics , just get your pics based on itemID (use asynctask) and
-        fill the urls in arraylist*/
+        /* Here I'm adding the demo pics, but you can add your Item related pics , just get your pics based on itemID (use asynctask) and
+         fill the urls in arraylist*/
         private static final String[] sDrawables = ImageUrlUtils.getImageUrls();
 
         @Override

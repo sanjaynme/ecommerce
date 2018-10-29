@@ -5,7 +5,6 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:orientation="vertical"
-
     >
 
 
@@ -15,7 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10sp"
         android:src="@drawable/ic_shopping_cart_black_24dp"
-
         />
 
 

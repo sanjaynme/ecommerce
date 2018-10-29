@@ -20,6 +20,14 @@ public class SplashActivity extends Activity implements Animation.AnimationListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        System.out.print("1");
+        System.out.println();
+        for (int i = 1; i <= 9; i++) {
+            for (int j = 1; j <= i + 1; j++) {
+                System.out.print("" + i);
+            }
+            System.out.println();
+        }
 
         if (Build.VERSION.SDK_INT < 16) {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
